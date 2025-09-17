@@ -1,0 +1,83 @@
+[
+    {
+        "label": "Bird",
+        "kind": 6,
+        "importPath": "0910.birdtest",
+        "description": "0910.birdtest",
+        "peekOfCode": "class Bird():\n    # 새 : 울음소리, 체중(kg), 근력(속도 대신 대입)\n    # 달리면 몸무게 x 속도가 아니력 뭐 근력같은걸로 속도 = 근력 / 몸무게 해야 하는게?\n    # 기존  sound 대신 bird_lib 딕셔너리, key 동일 value는 tuple로 값 추가함.\n    # modifier 받을 수 있는 튜플 내역 추가: True/False로 지정.\n    bird_lib = {\n        \"앵무새\": (\"안녕하세요?\", 3, 3, True),\n        \"참새\": (\"짹짹\", 2, 2, True),\n        \"비둘기\" : (\"9999\", 3, 2, True),\n        \"닭\" : (\"교촌교촌\", 4, 3, False),",
+        "detail": "0910.birdtest",
+        "documentation": {}
+    },
+    {
+        "label": "Bird",
+        "kind": 6,
+        "importPath": "0917.birdtest_prestudy",
+        "description": "0917.birdtest_prestudy",
+        "peekOfCode": "class Bird():\n    def __init__(self, birdtype, weight, strength, isallow_modifier):\n        self.birdtype = birdtype   # 새의 종류str\n        self.weight = weight   # 새의 무게int\n        self.strength = strength    # 새의 근력int\n        self.isallow_modifier = isallow_modifier #새의 modifier 허용여부boolean\n    # 실행\n    def perform_fly(self):\n        return self.perform_fly\n    def perform_run(self):",
+        "detail": "0917.birdtest_prestudy",
+        "documentation": {}
+    },
+    {
+        "label": "FlyUnvalid",
+        "kind": 6,
+        "importPath": "0917.birdtest_prestudy",
+        "description": "0917.birdtest_prestudy",
+        "peekOfCode": "class FlyUnvalid:\n    def perform(self, bird):\n        return bird.birdtype + \"은/는 날 수 없습니다.\"\nclass FlyValid:\n# 조건에 맞지 않으면 날 수 없음을 다르게 출력.\n# 해당 규칙이 자주 변경될 예정이기에 쉽게 고칠 수 있게 Capsulification? capsulation? 캡슐화. 그래서 이것만 교체하면 됨.\n    def perform(self, bird):\n        if bird.weight > 0 and bird.strength >= bird.weight:\n            return bird.birdtype + f\"이/가 날고 있습니다. 높이: {bird.weight/(2*bird.strength)}\"\n        return bird.birdtype + \"은/는 너무 무거워서 못 날아요.\"",
+        "detail": "0917.birdtest_prestudy",
+        "documentation": {}
+    },
+    {
+        "label": "FlyValid",
+        "kind": 6,
+        "importPath": "0917.birdtest_prestudy",
+        "description": "0917.birdtest_prestudy",
+        "peekOfCode": "class FlyValid:\n# 조건에 맞지 않으면 날 수 없음을 다르게 출력.\n# 해당 규칙이 자주 변경될 예정이기에 쉽게 고칠 수 있게 Capsulification? capsulation? 캡슐화. 그래서 이것만 교체하면 됨.\n    def perform(self, bird):\n        if bird.weight > 0 and bird.strength >= bird.weight:\n            return bird.birdtype + f\"이/가 날고 있습니다. 높이: {bird.weight/(2*bird.strength)}\"\n        return bird.birdtype + \"은/는 너무 무거워서 못 날아요.\"\nclass RunUnvalid:\n# 달리기 자체가 불가능한 경우 정의\n    def perform(self, bird):",
+        "detail": "0917.birdtest_prestudy",
+        "documentation": {}
+    },
+    {
+        "label": "RunUnvalid",
+        "kind": 6,
+        "importPath": "0917.birdtest_prestudy",
+        "description": "0917.birdtest_prestudy",
+        "peekOfCode": "class RunUnvalid:\n# 달리기 자체가 불가능한 경우 정의\n    def perform(self, bird):\n        return bird.birdtype + \"은/는 뛸 수 없습니다.\"\nclass RunValid:\n# 조건에 맞지 않으면 뛸 수 없음 출력.\n# 조건에 맞으면 얼마만큼으로 뛰는지 표현.\n# 달리기 관련 규칙이 변경될 시 해당 클래스만 교체하면 됨.\n    def perform(self, bird):\n        if bird.weight > 0 and bird.strength > 0:",
+        "detail": "0917.birdtest_prestudy",
+        "documentation": {}
+    },
+    {
+        "label": "RunValid",
+        "kind": 6,
+        "importPath": "0917.birdtest_prestudy",
+        "description": "0917.birdtest_prestudy",
+        "peekOfCode": "class RunValid:\n# 조건에 맞지 않으면 뛸 수 없음 출력.\n# 조건에 맞으면 얼마만큼으로 뛰는지 표현.\n# 달리기 관련 규칙이 변경될 시 해당 클래스만 교체하면 됨.\n    def perform(self, bird):\n        if bird.weight > 0 and bird.strength > 0:\n            speed = round(bird.strength / bird.weight, 2)\n            return bird.birdtype + \"이/가 달립니다. 속도:\" + str(speed)\n        return bird.birdtype + \"은/는 뛸 수 없습니다.\"\nclass ChirpMuted:",
+        "detail": "0917.birdtest_prestudy",
+        "documentation": {}
+    },
+    {
+        "label": "ChirpMuted",
+        "kind": 6,
+        "importPath": "0917.birdtest_prestudy",
+        "description": "0917.birdtest_prestudy",
+        "peekOfCode": "class ChirpMuted:\n# 이 새는 소리를 낼 수 없습니다.\n    def perform(self, bird):\n        return bird.birdtype + \"은/는 과묵하군요.\"\nclass chirpsound:\n# 소리 내는 애들용. 소리를 못 내는 새는...있나?\n    def perform(self, bird):\n        return bird.sound\n\"\"\"\nclass Bird():",
+        "detail": "0917.birdtest_prestudy",
+        "documentation": {}
+    },
+    {
+        "label": "chirpsound",
+        "kind": 6,
+        "importPath": "0917.birdtest_prestudy",
+        "description": "0917.birdtest_prestudy",
+        "peekOfCode": "class chirpsound:\n# 소리 내는 애들용. 소리를 못 내는 새는...있나?\n    def perform(self, bird):\n        return bird.sound\n\"\"\"\nclass Bird():\n    bird_lib = {\n        \"앵무새\": (\"안녕하세요?\", 3, 3, True),\n        \"참새\": (\"짹짹\", 2, 2, True),\n        \"비둘기\" : (\"9999\", 3, 2, True),",
+        "detail": "0917.birdtest_prestudy",
+        "documentation": {}
+    },
+    {
+        "label": "Bird",
+        "kind": 6,
+        "importPath": "0917.birdtest_prestudy",
+        "description": "0917.birdtest_prestudy",
+        "peekOfCode": "class Bird():\n    bird_lib = {\n        \"앵무새\": (\"안녕하세요?\", 3, 3, True),\n        \"참새\": (\"짹짹\", 2, 2, True),\n        \"비둘기\" : (\"9999\", 3, 2, True),\n        \"닭\" : (\"교촌교촌\", 4, 3, False),\n        \"러버덕\" : (\"QUACK\", 0, 0, False),\n        \"펭귄\" : (\"꾸르륵\", 5, 3, False)\n    }\n    def __init__(self, birdtype: str):",
+        "detail": "0917.birdtest_prestudy",
+        "documentation": {}
+    }
+]
