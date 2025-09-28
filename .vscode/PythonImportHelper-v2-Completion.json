@@ -16,6 +16,22 @@
         "documentation": {}
     },
     {
+        "label": "ABC",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
+        "label": "abstractmethod",
+        "importPath": "abc",
+        "description": "abc",
+        "isExtraImport": true,
+        "detail": "abc",
+        "documentation": {}
+    },
+    {
         "label": "Bird",
         "kind": 6,
         "importPath": "0910.birdtest",
@@ -121,6 +137,24 @@
         "description": "0917.classongoing",
         "peekOfCode": "class Tea(CaffeineBeverage):\n    def steep_tea_bag(self):\n        print(\"찻잎을 우려내는 중\")",
         "detail": "0917.classongoing",
+        "documentation": {}
+    },
+    {
+        "label": "PizzaMasterCompany",
+        "kind": 6,
+        "importPath": "0924.main",
+        "description": "0924.main",
+        "peekOfCode": "class PizzaMasterCompany(ABC):\n    @abstractmethod\n    def slicemypizza():\n# A: 클라이언트\nif __name__ == \"__main__\":\n# B: 팩토리\n# C: ConcreteCreator\n# D: 인터페이스\nclass PizzaMaster(ABC):",
+        "detail": "0924.main",
+        "documentation": {}
+    },
+    {
+        "label": "PizzaMaster",
+        "kind": 6,
+        "importPath": "0924.main",
+        "description": "0924.main",
+        "peekOfCode": "class PizzaMaster(ABC):",
+        "detail": "0924.main",
         "documentation": {}
     }
 ]
