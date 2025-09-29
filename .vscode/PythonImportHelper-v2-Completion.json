@@ -140,20 +140,74 @@
         "documentation": {}
     },
     {
-        "label": "PizzaMasterCompany",
+        "label": "Pizza",
         "kind": 6,
         "importPath": "0924.main",
         "description": "0924.main",
-        "peekOfCode": "class PizzaMasterCompany(ABC):\n    @abstractmethod\n    def slicemypizza():\n# A: 클라이언트\nif __name__ == \"__main__\":\n# B: 팩토리\n# C: ConcreteCreator\n# D: 인터페이스\nclass PizzaMaster(ABC):",
+        "peekOfCode": "class Pizza(ABC):\n    def __init__(self, name:str):\n        self.name = name\n    @abstractmethod\n    def pizza_prepare(self)-> None: # 스타일별로 다름!\n        raise NotImplementedError\n    def pizza_order(self) -> None:\n        print(f\"{self.name} 피자 주문을 받습니다.\")\n    def slice_my_pizza(self) -> None:\n        print(f\"{self.name} 피자를 자릅니다.\")",
         "detail": "0924.main",
         "documentation": {}
     },
     {
-        "label": "PizzaMaster",
+        "label": "PizzaMasterCompany",
         "kind": 6,
         "importPath": "0924.main",
         "description": "0924.main",
-        "peekOfCode": "class PizzaMaster(ABC):",
+        "peekOfCode": "class PizzaMasterCompany(ABC):\n    @abstractmethod\n    def factory_method(self, pizza_type: str) -> Pizza:\n        pass\n# 탬플릿 메서드, 공통 절차는 고정.\n    def pizza_process(self, pizza_type: str) -> None:\n        print(f\"\\n ===== {pizza_type} 피자 주문 처리 =====\")\n        pizza = self.factory_method(pizza_type) # 위에 있는 팩토리 메서드 있죠? 그걸로 피자 인스턴스를 생성합니다.\n        # 프로세스 처리 단계.\n        pizza.pizza_order()",
+        "detail": "0924.main",
+        "documentation": {}
+    },
+    {
+        "label": "SeoulStore",
+        "kind": 6,
+        "importPath": "0924.main",
+        "description": "0924.main",
+        "peekOfCode": "class SeoulStore(PizzaMasterCompany):\n    def factory_method(self, pizza_type: str) -> Pizza:\n        if pizza_type == \"Combination\":\n            return SeoulCombinationPizza()\n        elif pizza_type == \"4 Cheese\":\n            return SeoulQuatroCheese()\n        else:\n            raise ValueError(f\"서울 지점에는 {pizza_type}이 없습니다.\")\n# Creator - Busan\nclass BusanStore(PizzaMasterCompany):",
+        "detail": "0924.main",
+        "documentation": {}
+    },
+    {
+        "label": "BusanStore",
+        "kind": 6,
+        "importPath": "0924.main",
+        "description": "0924.main",
+        "peekOfCode": "class BusanStore(PizzaMasterCompany):\n    def factory_method(self, pizza_type: str) -> Pizza:\n        if pizza_type == \"Pepperoni\":\n            return BusanPepperoniPizza()\n        elif pizza_type == \"Shrimp\":\n            return BusanShrimpPizza()\n        else:\n            raise ValueError(f\"부산 지점에는 {pizza_type}이 없습니다.\")\n# C : ConcreteProduct\n# 구체적인 예시 - 서울에서 파는 피자, 부산에서 파는 피자.",
+        "detail": "0924.main",
+        "documentation": {}
+    },
+    {
+        "label": "SeoulQuatroCheese",
+        "kind": 6,
+        "importPath": "0924.main",
+        "description": "0924.main",
+        "peekOfCode": "class SeoulQuatroCheese(Pizza):\n    def __init__(self):\n        super().__init__(\"4 Cheese\")\n    def pizza_prepare(self) -> None:\n        print(\"4 Cheese Pizza going\")\nclass SeoulCombinationPizza(Pizza):\n    def __init__(self):\n        super().__init__(\"Combination\")\n    def pizza_prepare(self) -> None:\n        print(\"Combination Pizza going\")",
+        "detail": "0924.main",
+        "documentation": {}
+    },
+    {
+        "label": "SeoulCombinationPizza",
+        "kind": 6,
+        "importPath": "0924.main",
+        "description": "0924.main",
+        "peekOfCode": "class SeoulCombinationPizza(Pizza):\n    def __init__(self):\n        super().__init__(\"Combination\")\n    def pizza_prepare(self) -> None:\n        print(\"Combination Pizza going\")\nclass BusanPepperoniPizza(Pizza):\n    def __init__(self):\n        super().__init__(\"Pepperoni\")\n    def pizza_prepare(self) -> None:\n        print(\"마 니 무봤나 뻬뻐로니피자\")",
+        "detail": "0924.main",
+        "documentation": {}
+    },
+    {
+        "label": "BusanPepperoniPizza",
+        "kind": 6,
+        "importPath": "0924.main",
+        "description": "0924.main",
+        "peekOfCode": "class BusanPepperoniPizza(Pizza):\n    def __init__(self):\n        super().__init__(\"Pepperoni\")\n    def pizza_prepare(self) -> None:\n        print(\"마 니 무봤나 뻬뻐로니피자\")\nclass BusanShrimpPizza(Pizza):\n    def __init__(self):\n        super().__init__(\"Shrimp\")\n    def pizza_prepare(self):\n        print(\"새우 양식은 부산이 아니라는 사실\")",
+        "detail": "0924.main",
+        "documentation": {}
+    },
+    {
+        "label": "BusanShrimpPizza",
+        "kind": 6,
+        "importPath": "0924.main",
+        "description": "0924.main",
+        "peekOfCode": "class BusanShrimpPizza(Pizza):\n    def __init__(self):\n        super().__init__(\"Shrimp\")\n    def pizza_prepare(self):\n        print(\"새우 양식은 부산이 아니라는 사실\")\n# A: 클라이언트\nif __name__ == \"__main__\":\n    print(\" 🍕 Pizza Day \")\n    seoul_store = SeoulStore()\n    seoul_store.pizza_process(\"4 Cheese\")",
         "detail": "0924.main",
         "documentation": {}
     }
