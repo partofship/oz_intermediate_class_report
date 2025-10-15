@@ -32,6 +32,33 @@
         "documentation": {}
     },
     {
+        "label": "time,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time.",
+        "description": "time.",
+        "detail": "time.",
+        "documentation": {}
+    },
+    {
+        "label": "templib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "templib",
+        "description": "templib",
+        "detail": "templib",
+        "documentation": {}
+    },
+    {
+        "label": "templib,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "templib.",
+        "description": "templib.",
+        "detail": "templib.",
+        "documentation": {}
+    },
+    {
         "label": "Bird",
         "kind": 6,
         "importPath": "0910.birdtest",
@@ -209,6 +236,69 @@
         "description": "0924.main",
         "peekOfCode": "class BusanShrimpPizza(Pizza):\n    def __init__(self):\n        super().__init__(\"Shrimp\")\n    def pizza_prepare(self):\n        print(\"새우 양식은 부산이 아니라는 사실\")\n# A: 클라이언트\nif __name__ == \"__main__\":\n    print(\" 🍕 Pizza Day \")\n    seoul_store = SeoulStore()\n    seoul_store.pizza_process(\"4 Cheese\")",
         "detail": "0924.main",
+        "documentation": {}
+    },
+    {
+        "label": "USER_INFORMATIONS",
+        "kind": 5,
+        "importPath": "1001.templib",
+        "description": "1001.templib",
+        "peekOfCode": "USER_INFORMATIONS = [\n    {\"user_id\": 1, \"username\": \"이건우\", \"password\": \"1q2w3e4r!\", \"nickname\": \"게임 만드는 자\"},\n    {\"user_id\": 2, \"username\": \"최건희\", \"password\": \"rjsgmlWkd!\", \"nickname\": \"건희\"},\n    {\"user_id\": 3, \"username\": \"이아진\", \"password\": \"zyzyzyzydkwls\", \"nickname\": \"아진\"},\n    {\"user_id\": 4, \"username\": \"송호창\", \"password\": \"ghghckdckd\", \"nickname\": \"송호창\"},\n]\nPOSTS = [\n    {\"post_id\": 1, \"user_id\": 1, \"content\": \"아무도 몰랐던 심화반 사전과제 코드의 정체!!!\"},\n    {\"post_id\": 2, \"user_id\": 1, \"content\": \"아 피곤하다.....\"},\n    {\"post_id\": 3, \"user_id\": 2, \"content\": \"건희건희건희 테스트\"},",
+        "detail": "1001.templib",
+        "documentation": {}
+    },
+    {
+        "label": "POSTS",
+        "kind": 5,
+        "importPath": "1001.templib",
+        "description": "1001.templib",
+        "peekOfCode": "POSTS = [\n    {\"post_id\": 1, \"user_id\": 1, \"content\": \"아무도 몰랐던 심화반 사전과제 코드의 정체!!!\"},\n    {\"post_id\": 2, \"user_id\": 1, \"content\": \"아 피곤하다.....\"},\n    {\"post_id\": 3, \"user_id\": 2, \"content\": \"건희건희건희 테스트\"},\n    {\"post_id\": 4, \"user_id\": 2, \"content\": \"건??? 희????\"},\n    {\"post_id\": 5, \"user_id\": 3, \"content\": \"친구들이 미쳐가는 것 같아요!! 살려줘요!!!\"},\n    {\"post_id\": 6, \"user_id\": 3, \"content\": \"그 친구가 나야나!! 나야나!!!\"},\n    {\"post_id\": 7, \"user_id\": 4, \"content\": \"나만 정상인듯.....\"},\n]\n# JWT 서명에 사용할 비밀 키",
+        "detail": "1001.templib",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "1001.templib",
+        "description": "1001.templib",
+        "peekOfCode": "SECRET_KEY = \"andrew_access\"",
+        "detail": "1001.templib",
+        "documentation": {}
+    },
+    {
+        "label": "simple_hash",
+        "kind": 2,
+        "importPath": "1001.tokenmaker",
+        "description": "1001.tokenmaker",
+        "peekOfCode": "def simple_hash(text):\n    result = 0\n    for i, char in enumerate(text):\n        result += ord(char) * (i + 1)\n    return result % 9604\n# 토큰 생성.\n# 헤더 - 토큰타입 JWT, 알고리즘 커스텀\n# 페이로드 - 사용자 정보(id, 유저이름, 만료 시간)\ndef create_token(user_id, username, expiry_minutes = 10):\n    header = {\"typ\": \"JWT\", \"alg\": \"custom\"}",
+        "detail": "1001.tokenmaker",
+        "documentation": {}
+    },
+    {
+        "label": "create_token",
+        "kind": 2,
+        "importPath": "1001.tokenmaker",
+        "description": "1001.tokenmaker",
+        "peekOfCode": "def create_token(user_id, username, expiry_minutes = 10):\n    header = {\"typ\": \"JWT\", \"alg\": \"custom\"}\n    current_time = int(time.time())\n    payload = {\n        \"sub\": user_id,\n        \"name\": username,\n        \"iat\": current_time,\n        \"exp\": current_time + (expiry_minutes * 60)\n    }\n    header_json_string = json.dumps(header, separators=(',', ':'))",
+        "detail": "1001.tokenmaker",
+        "documentation": {}
+    },
+    {
+        "label": "access_token",
+        "kind": 5,
+        "importPath": "1001.tokenmaker",
+        "description": "1001.tokenmaker",
+        "peekOfCode": "access_token = input(\"Token: \")",
+        "detail": "1001.tokenmaker",
+        "documentation": {}
+    },
+    {
+        "label": "verify_token",
+        "kind": 2,
+        "importPath": "1001.tokenverifier",
+        "description": "1001.tokenverifier",
+        "peekOfCode": "def verify_token(token):\n    try:\n        parts = token.split('.')\n        # 토큰 형식 확인\n        if len(parts) != 3:\n            print(\"토큰 형식이 올바르지 않습니다.\")\n            return None\n        # 2. 서명 위조 여부\n        header_string = parts[0]\n        payload_string = parts[1]",
+        "detail": "1001.tokenverifier",
         "documentation": {}
     }
 ]
